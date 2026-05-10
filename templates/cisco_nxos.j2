@@ -1,3 +1,9 @@
-line console
-
-  exec-timeout 10
+hostname {{ hostname }}
+!
+! Site: {{ location.name }}
+!
+{% for server in config_context.ntp_servers %}
+ntp server {{ server }}
+{% endfor %}
+!
+end
